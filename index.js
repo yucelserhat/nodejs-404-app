@@ -12,7 +12,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect(process.env.DB_URI, {
+mongoose.connect(process.env.DB_URI || "mongodb+srv://luftadeneme:r9FdD7HZfLPTPRxN@cluster0.popqsho.mongodb.net/ipControlData?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
